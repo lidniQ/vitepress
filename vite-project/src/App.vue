@@ -44,22 +44,27 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  background-color: #f2f5f7;
   margin-left:30px;
+  
 }
 
 .erka-menu-bar {
   height: 60px;
   background-color: #dee6e9;
   padding-bottom:20px;
+  
 }
 
 .directory {
   display: flex;
   flex: 1;
+  background-color: #f2f5f7;
+
+  border-radius: 10px;
 }
 
 .directory-sidebar {
+
   width: 20%;
 }
 
@@ -70,8 +75,12 @@ export default {
 }
 
 .directory-edit {
-  margin-bottom: 10px;
   height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin: 40px 0 10px 0;
+  padding: 10px 0 0 10px;
+  background-color: lightgray;
 
 }
 
