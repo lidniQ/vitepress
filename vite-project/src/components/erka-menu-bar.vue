@@ -1,13 +1,23 @@
 <template>
   <div class="menubar">
   <span>Главный экран  |  Справка</span>
-</div>
+  </div>
 </template>
 <script>
 </script>
 
 <style>
   .menubar{
-    margin: 20px 0 0 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 10px;
+
+  position: absolute;
+  width: 249px;
+  height: 17px;
+  left: 20px;
+  top: 16px;
   }
 </style>

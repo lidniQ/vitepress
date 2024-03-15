@@ -45,7 +45,9 @@ export default {
   display: flex;
   flex-direction: column;
   margin-left:30px;
-  
+  width: 1857px;
+  height: 978px;
+  background: #DEE6E9;
 }
 
 .erka-menu-bar {
@@ -56,16 +58,39 @@ export default {
 }
 
 .directory {
-  display: flex;
-  flex: 1;
-  background-color: #f2f5f7;
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 20px;
 
-  border-radius: 10px;
+position: absolute;
+width: 1817px;
+height: 901px;
+left: 20px;
+top: 52px;
+
+background: #F2F5F7;
+border-radius: 5px;
+
 }
 
 .directory-sidebar {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 10px;
+gap: 15px;
 
-  width: 20%;
+width: 320px;
+height: 861px;
+
+background: #F2F5F7;
+
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
 }
 
 .directory-form {
@@ -75,19 +100,32 @@ export default {
 }
 
 .directory-edit {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  margin: 40px 0 10px 0;
-  padding: 10px 0 0 10px;
-  background-color: lightgray;
+position: absolute;
+width: 1457px;
+height: 50px;
+left: 350px;
+top: 20px;
+
+background: #F2F5F7;
 
 }
 
 
 .directory-view {
-  height: 300px; 
-  background-color: #ffff;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 20px 30px;
+gap: 20px;
+
+position: absolute;
+width: 1457px;
+height: 821px;
+left: 350px;
+top: 60px;
+
+background: #FFFFFF;
+
 }
 
 </style>

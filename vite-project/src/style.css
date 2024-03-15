@@ -11,3 +11,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+body {
+  position: relative;
+  width: 1857px;
+  height: 978px;
+  margin: 0;
+  background: #DEE6E9;
+}

@@ -1,7 +1,7 @@
 <template>
     <div class="pencil">
     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="30px" height="30px" viewBox="0 0 485.219 485.22" style="enable-background:new 0 0 485.219 485.22;"
+	 width="24px" height="24px" viewBox="0 0 485.219 485.22" style="enable-background:new 0 0 485.219 485.22;"
 	 xml:space="preserve" @click="openMenu">
 <g>
 	<path d="M467.476,146.438l-21.445,21.455L317.35,39.23l21.445-21.457c23.689-23.692,62.104-23.692,85.795,0l42.886,42.897
@@ -35,7 +35,15 @@ export default{
 
 <style>
 .pencil{
-    background-color: lightgray;
-    border-radius: 50%;
+position: absolute;
+width: 32px;
+height: 32px;
+left: 12px;
+top: 8px;
+border-radius: 80%;
+background: #9DA9B0;
+svg{
+    margin: 2px 0 0 3px;
+}
 }
 </style>
