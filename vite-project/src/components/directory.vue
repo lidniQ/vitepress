@@ -12,9 +12,9 @@ import { marked } from 'marked';
 export default {
   data() {
     return {
-      articleContent: '# Привет', 
+      articleContent: '# Привет \n ## kak dela?', 
       renderedArticle: '', 
-      editing: false, 
+      editing: true, 
     };
   },
   methods: {

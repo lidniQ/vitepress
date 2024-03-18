@@ -1,6 +1,5 @@
 <template>
-  <div class="sidebar">
-    <scroll>
+    <div class="sidebar">
     <div class="label">
       <ul>
         <li v-for="(article, index) in articles" :key="index" class="li-title">
@@ -8,17 +7,17 @@
             {{ article.title }}
             &nbsp;
             <span v-if="article.expanded">
-              <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg v-if="article.items" width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.0001 7.29388L6.96491 1.60306L1.07057 7.5" stroke="#9DA9B0" stroke-width="1.5"/>
               </svg>
             </span>
             <span v-else>
-              <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg v-if="article.items" width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.999871 1.70612L7.03509 7.39694L12.9294 1.5" stroke="#9DA9B0" stroke-width="1.5"/>
               </svg>
             </span>
           </div>
-          <ul v-if="article.expanded">
+          <ul v-if="article.expanded" >
             <li v-for="(items, index) in article.items" :key="index" class="li-sub-items">
               <a :href="'#' + items" class="sub-item-link">{{ items }}</a>
             </li>
@@ -26,12 +25,10 @@
         </li>
       </ul>
       </div>
-    </scroll>
   </div>
 </template>
 
 <script>
-import scroll from './scroll.vue';
 
 export default {
   data() {
@@ -39,6 +36,20 @@ export default {
       articles: [
         { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
         { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
+        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
+        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
+        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
+        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
+        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
+        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
+        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
+        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
+        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
+        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
+        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
+        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
+        { title: '3 штуки',  },
+
       ],
     };
   },
@@ -48,7 +59,6 @@ export default {
     },
   },
   components: {
-    scroll,
   }
 };
 </script>

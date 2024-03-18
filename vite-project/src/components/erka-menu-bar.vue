@@ -1,6 +1,6 @@
 <template>
   <div class="menubar">
-  <span>Главный экран  |  Справка</span>
+  <span>Главный экран &nbsp;|&nbsp;Справка</span>
   </div>
 </template>
 <script>

@@ -10,12 +10,28 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+  overflow-x: hidden;
+  word-wrap: break-all;
 
-body {
-  position: relative;
-  width: 1857px;
-  height: 978px;
-  margin: 0;
-  background: #DEE6E9;
-}
+
+  ::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #f2f5f7;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #16c8ab;
+    border: 3px solid #f2f5f7;
+    border-radius: 100px;
+  }
+
+  body {
+    position: relative;
+    width: 1857px;
+    height: 978px;
+    margin: 0;
+    background: #DEE6E9;
+  }

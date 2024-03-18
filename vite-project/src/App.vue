@@ -5,15 +5,19 @@
     </div>
     <div class="directory">
       <div class="directory-sidebar">
+        <scroll>
         <directory_side_bar/>
+        </scroll>
       </div>
       <div class="directory-form">
         <div class="directory-edit">
           <directory_menu_edit/>
         </div>
-        <div class="directory-view">
-          <Directory/>
-        </div>
+          <div class="directory-view">
+            <scroll>
+              <Directory/>
+            </scroll>
+          </div>
       </div>
     </div>
   </div>
@@ -26,6 +30,7 @@ import erka_menu_bar from './components/erka-menu-bar.vue'
 import directory_side_bar from './components/directory-side-bar.vue'
 import Directory from './components/directory.vue'
 import directory_menu_edit from './components/directory-menu-edit.vue'
+import scroll from './components/scroll.vue';
 
 export default {
   components: {
@@ -33,7 +38,7 @@ export default {
     directory_side_bar,
     Directory,
     directory_menu_edit,
-
+    scroll
   }
 }
 

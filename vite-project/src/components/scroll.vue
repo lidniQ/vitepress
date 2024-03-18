@@ -6,8 +6,7 @@
 
 <style>
 .scrollable-container {
-  overflow-y: scroll;
-  max-height: 200px;
+  overflow-y: auto;
 }
 
 
