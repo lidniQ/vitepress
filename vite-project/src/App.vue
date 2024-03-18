@@ -13,11 +13,14 @@
         <div class="directory-edit">
           <directory_menu_edit/>
         </div>
-          <div class="directory-view">
+        <div class="directory-view">
             <scroll>
-              <Directory/>
+              <test/>
             </scroll>
-          </div>
+        </div>
+        <div class="choise-menu">
+
+        </div>
       </div>
     </div>
   </div>
@@ -29,6 +32,8 @@
 import erka_menu_bar from './components/erka-menu-bar.vue'
 import directory_side_bar from './components/directory-side-bar.vue'
 import Directory from './components/directory.vue'
+import test from './components/directoryTEST.vue'
+
 import directory_menu_edit from './components/directory-menu-edit.vue'
 import scroll from './components/scroll.vue';
 
@@ -66,7 +71,6 @@ export default {
 display: flex;
 flex-direction: row;
 align-items: flex-start;
-padding: 20px;
 
 position: absolute;
 width: 1817px;
@@ -95,6 +99,7 @@ flex: none;
 order: 0;
 align-self: stretch;
 flex-grow: 0;
+border-radius: 5px;
 
 }
 
@@ -120,15 +125,12 @@ background: #F2F5F7;
 display: flex;
 flex-direction: column;
 align-items: flex-start;
-padding: 20px 30px;
 gap: 20px;
-
 position: absolute;
 width: 1457px;
 height: 821px;
 left: 350px;
 top: 60px;
-
 background: #FFFFFF;
 
 }
