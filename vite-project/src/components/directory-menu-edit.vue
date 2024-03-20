@@ -1,29 +1,33 @@
 <template>
   <div @click="toggleViews">
-    <pencil_edit v-if="!pencil_flag"/>
+    <pencil_edit v-if="!flag"/>
   </div>
   <div class="edit-menu">
-    <main_menu_edit v-if="pencil_flag"/>
+    <main_menu_edit v-if="flag"/>
   </div>
 </template>
 
 <script>
 import pencil_edit from '../components/edit_menu_components/pencil-edit.vue'
 import main_menu_edit from '../components/edit_menu_components/main-menu-edit.vue'
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   data() {
     return {
-      pencil_flag: false,
     }
   },
   components: {
     pencil_edit,
     main_menu_edit,
   },
+  computed: {
+    ...mapState(['flag'])
+  },
   methods: {
+    ...mapMutations(['setflag']),
     toggleViews() {
-      this.pencil_flag = !this.pencil_flag;
+      this.setflag(!this.flag);
     }
   }
 }

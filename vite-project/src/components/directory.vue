@@ -1,34 +1,35 @@
 <template>
-   <div v-if="editing">
-      <textarea v-model="articleContent"></textarea>
-      <br>
-      <button @click="saveArticle">Сохранить</button>
-    </div>
-    <div v-else v-html="renderedArticle"></div>
+  <div v-if="editing">
+    <textarea v-model="articleContent" @mouseup="handleSelection"></textarea>
+    <br>
+  </div>
+  <div v-else v-html="renderedArticle"></div>
+  
 </template>
+
 <script>
 import { marked } from 'marked';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   data() {
     return {
-      articleContent: '# Привет \n ## kak dela?', 
-      renderedArticle: '', 
-      editing: true, 
+      articleContent: '# Привет \n ## kak dela?',
+      renderedArticle: '',
+      editing: true,
     };
   },
+  components: {
+  },
+  computed: {
+    ...mapState(['selectedText', 'textarea'])
+  },
   methods: {
-    addNewArticle() {
-
-    },
-    editArticle() {
-      this.editing = true;
-
-    },
-    saveArticle() {
-      this.renderedArticle = marked(this.articleContent);
-      this.editing = false;
-    },
+    
+    ...mapMutations(['setSelectedText']),
+    handleSelection() {
+      this.setSelectedText(window.getSelection().toString());
+    }
   },
   mounted() {
     this.renderedArticle = marked(this.articleContent);
@@ -38,4 +39,20 @@ export default {
 </script>
 
 <style>
+textarea {
+  color: black;
+  width: 1470px;
+  height: 800px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  resize: none;
+  background: #FFFFFF;  
+  border-radius: 5px;
+
+}
+button{
+  background-color: #ffffff;
+  border: 0cap;
+}
 </style>

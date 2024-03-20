@@ -5,7 +5,7 @@
     </div>
     <div class="directory">
       <div class="directory-sidebar">
-        <scroll>
+        <scroll style="width: 320px; overflow-x: hidden;">
         <directory_side_bar/>
         </scroll>
       </div>
@@ -14,12 +14,12 @@
           <directory_menu_edit/>
         </div>
         <div class="directory-view">
-            <scroll>
-              <test/>
+            <scroll style="width: 1475px; overflow-x: hidden;">
+              <Directory/>
             </scroll>
         </div>
         <div class="choise-menu">
-
+          <save_choice v-if="flag"/>
         </div>
       </div>
     </div>
@@ -32,10 +32,10 @@
 import erka_menu_bar from './components/erka-menu-bar.vue'
 import directory_side_bar from './components/directory-side-bar.vue'
 import Directory from './components/directory.vue'
-import test from './components/directoryTEST.vue'
-
 import directory_menu_edit from './components/directory-menu-edit.vue'
 import scroll from './components/scroll.vue';
+import save_choice from './components/save-choice.vue';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   components: {
@@ -43,8 +43,12 @@ export default {
     directory_side_bar,
     Directory,
     directory_menu_edit,
-    scroll
-  }
+    scroll,
+    save_choice,
+  },
+  computed: {
+    ...mapState(['flag'])
+  },
 }
 
 </script>
@@ -52,7 +56,7 @@ export default {
 
 <style>
 .container {
-  display: flex;
+  display: flex;  
   flex-direction: column;
   margin-left:30px;
   width: 1857px;
@@ -68,7 +72,7 @@ export default {
 }
 
 .directory {
-display: flex;
+  display: flex;
 flex-direction: row;
 align-items: flex-start;
 
@@ -80,6 +84,7 @@ top: 52px;
 
 background: #F2F5F7;
 border-radius: 5px;
+
 
 }
 
@@ -115,7 +120,6 @@ width: 1457px;
 height: 50px;
 left: 350px;
 top: 20px;
-
 background: #F2F5F7;
 
 }
@@ -125,14 +129,29 @@ background: #F2F5F7;
 display: flex;
 flex-direction: column;
 align-items: flex-start;
-gap: 20px;
 position: absolute;
-width: 1457px;
-height: 821px;
-left: 350px;
-top: 60px;
+margin-top: 80px;
+margin-left: 0px;
+padding-top: 10px;
+height: 800px;
+width: 1470px;
+border-radius: 5px;
 background: #FFFFFF;
+z-index: 1
+}
 
+
+.choise-menu {
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+position: absolute;
+top: 841px;
+
+height: 60px;
+width: 1470px;
+
+background: #F2F5F7;
 }
 
 </style>

@@ -7,6 +7,7 @@
 <style>
 .scrollable-container {
   overflow-y: auto;
+  z-index: 2
 }
 
 
