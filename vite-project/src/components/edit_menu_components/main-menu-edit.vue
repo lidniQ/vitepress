@@ -5,21 +5,21 @@
         <div class="col">
           <div class="first box">
             <form>
-              <select id="font-size" name="text-size">
-                <option value="h1" onclick="f1(this)">Заголовок 1</option>
-                <option value="h2" onclick="f2(this)">Заголовок 2</option>
-                <option value="h3" onclick="f3(this)">Заголовок 3</option>
-                <option value="p" onclick="f4(this)">Параграф</option>
+              <select id="font-size" name="text-size" @change="handleFontSizeChange">
+                <option value="h1">Заголовок 1</option>
+                <option value="h2">Заголовок 2</option>
+                <option value="h3">Заголовок 3</option>
+                <option value="p">Параграф</option>
               </select>
             </form>
           </div>
           <div class="second box">
             <button type="button"
-                    onclick="f5(this)">
+                    @click="handleBoldText">
                     <i class="fa-solid fa-bold"></i>
             </button>
             <button type="button"
-                    onclick="f6(this)">
+                    @click="handleItalicText">
                     <i class="fa-solid fa-italic"></i>            
             </button>
             <button type="button"
@@ -59,14 +59,14 @@
                     <i class="fa-solid fa-video"></i>            
             </button>
             <button class="link" type="button"
-                    onclick="f14(this)">
+                    onclick="f15(this)">
                     <i class="fa-solid fa-link"></i>            
             </button>
             <button type="button"
-                    onclick="f15(this)">
+                    onclick="f16(this)">
                     <i class="fa-solid fa-table"></i>            
             </button>
-            <input type="color" onchange="f16(this)">
+            <input type="color" onchange="f17(this)">
           </div>
         </div>
       </div>
@@ -75,16 +75,41 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  data() { 
+  data() {
     return {
-    }
+    };
   },
-  components:{ 
+  methods: {
+    ...mapActions(['updateSelectedText']),
+    insertMarkdownText(textToInsert) {
+      const textarea = this.$store.getters.getTextarea;
+      const startPos = textarea.selectionStart;
+      const endPos = textarea.selectionEnd;
+      let text = textarea.value;
 
+      if (this.$store.state.selectedText === "" || this.$store.state.selectedText === " ") {
+
+      }
+      else {
+        text = text.substring(0, startPos) + textToInsert + text.substring(startPos, endPos) + textToInsert + text.substring(endPos);
+        this.isBold = true;
+        textarea.value = text;
+        this.markdownContent = textarea.value;
+      }
+    },
+
+    handleBoldText() {
+      this.insertMarkdownText('**');
+    },
+
+    handleItalicText() {
+      this.insertMarkdownText('_');
+    }
   }
-}
+};
 </script>
 
 <style>
@@ -150,10 +175,10 @@ export default {
 button:hover{
     background-color: #16c8aa86;
   }
-  .link.button:focus{
+  button.link:focus {
   background-color: #0af1cb;
   color: #000000;
-} 
+}
 
 }
 
@@ -194,9 +219,4 @@ button{
   cursor: pointer;
   user-select: none;
 }
-
-
-
-
-
 </style>

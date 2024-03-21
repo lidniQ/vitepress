@@ -4,7 +4,6 @@
     <br>
   </div>
   <div v-else v-html="renderedArticle"></div>
-  
 </template>
 
 <script>
@@ -14,27 +13,26 @@ import { mapState, mapMutations } from 'vuex';
 export default {
   data() {
     return {
-      articleContent: '# Привет \n ## kak dela?',
-      renderedArticle: '',
+      articleContent: 'Привет, _как_ <center>Центр</center>',
       editing: true,
+      renderedArticle: '', 
     };
-  },
-  components: {
   },
   computed: {
     ...mapState(['selectedText', 'textarea'])
   },
   methods: {
-    
-    ...mapMutations(['setSelectedText']),
-    handleSelection() {
-      this.setSelectedText(window.getSelection().toString());
-    }
+    ...mapMutations(['setSelectedText', 'setTextarea']),
+    handleSelection(event) {
+    const clickedWord = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd);
+    this.setSelectedText(clickedWord);
+} 
+
   },
   mounted() {
     this.renderedArticle = marked(this.articleContent);
-
-  },
+    this.setTextarea(document.querySelector('textarea'));
+  }
 };
 </script>
 
@@ -47,12 +45,11 @@ textarea {
   padding: 0;
   margin: 0;
   resize: none;
-  background: #FFFFFF;  
+  background: #FFFFFF;
   border-radius: 5px;
-
 }
-button{
+button {
   background-color: #ffffff;
-  border: 0cap;
+  border: none; 
 }
 </style>

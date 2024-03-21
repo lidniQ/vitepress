@@ -7,14 +7,10 @@
             {{ article.title }}
             &nbsp;
             <span v-if="article.expanded">
-              <svg v-if="article.items" width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.0001 7.29388L6.96491 1.60306L1.07057 7.5" stroke="#9DA9B0" stroke-width="1.5"/>
-              </svg>
+              <i v-if="article.items" class="fa-solid fa-chevron-up"></i>
             </span>
             <span v-else>
-              <svg v-if="article.items" width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.999871 1.70612L7.03509 7.39694L12.9294 1.5" stroke="#9DA9B0" stroke-width="1.5"/>
-              </svg>
+              <i v-if="article.items" class="fa-solid fa-chevron-down"></i>
             </span>
           </div>
           <ul v-if="article.expanded" >
@@ -76,9 +72,6 @@ export default {
     .li-title{
     padding: 0 0 10px 0;
   }
-  span{
-    
-  }
   }
 }
 
@@ -100,7 +93,6 @@ export default {
     line-height: 15px;
     display: flex;
     align-items: center;
-    color: red; 
     list-style-type: none;
   }
 }
