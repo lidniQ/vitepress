@@ -118,7 +118,6 @@ border-radius: 5px;
 position: absolute;
 width: 1457px;
 height: 50px;
-left: 350px;
 top: 20px;
 background: #F2F5F7;
 
