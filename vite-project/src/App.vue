@@ -13,7 +13,7 @@
         <div class="directory-edit"  v-if="selectedTitle">
           <directory_menu_edit/>  
         </div>
-        <div class="directory-view" :style="directoryViewStyles">
+        <div class="directory-view" :style="this.flag ? newDirectoryStyle : directoryViewStyles">
           <div class="empty_wrapper" v-if="!selectedTitle">
           <div class="empty_label"> Выберите модуль для просмотра документации </div>
           <div class="empty_icon" style="padding-left: 32px;"> <i class="fa-solid fa-info"></i></div>
@@ -53,9 +53,14 @@ export default {
   computed: {
     ...mapState(['flag', 'preview', 'selectedTitle']),
 directoryViewStyles() {
-      return {
-        height: this.flag ? '760px' : '800px',
-        overflowX: 'hidden',
+  return {
+        marginTop: this.selectedTitle ? '80px': '20px',
+        height: this.selectedTitle ? '800px' : '860px',
+      };
+    },
+    newDirectoryStyle() {
+  return {
+        height: this.flag ? '760px' : '800px',  
       };
     },
   },

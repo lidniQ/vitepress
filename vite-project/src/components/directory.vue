@@ -21,7 +21,7 @@ export default {
     ...mapState(['selectedText', 'textarea', 'flag', 'preview']),
       directoryViewStyles() {
       return {
-        height: this.flag ? '760px' : '800px',
+        height: this.flag ? '720px' : '800px',
         overflowX: 'hidden',
       };
     },
@@ -45,7 +45,6 @@ export default {
 textarea {
   color: black;
   width: 1470px;
-  height: 800px;
   border: none;
   padding: 0;
   margin: 0;
