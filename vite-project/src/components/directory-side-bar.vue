@@ -24,7 +24,9 @@
   </div>
 </template>
 
+
 <script>
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   data() {
@@ -49,9 +51,14 @@ export default {
       ],
     };
   },
+  computed: { 
+    ...mapState(['selectedTitle', 'selectedItems'])
+  },
   methods: {
-    toggleDropdown(index) {
-      this.articles[index].expanded = !this.articles[index].expanded;
+  ...mapMutations(['setSelectedTitle', 'setSelectedItems']),
+  toggleDropdown(index, items) {
+    this.articles[index].expanded = !this.articles[index].expanded;
+    this.setSelectedTitle(this.articles[index].title);
     },
   },
   components: {
@@ -82,7 +89,7 @@ export default {
   line-height: 17px;
   display: flex;
   align-items: center;
-  color: #333333; 
+  color: black; 
   cursor: pointer;
   ul {
     width: 174px;
@@ -96,15 +103,22 @@ export default {
     list-style-type: none;
   }
 }
-.sub-item-link{
-      text-decoration: none;
-      color: #707070;   
+.sidebar-item:hover{
+  color: #16c8aa86;
 }
 
-a:hover {
-  color: #0C9C85; 
-}    
-.li-sub-items{
-  padding:0;
+.sub-item-link{ 
+      text-decoration: none;
+      color: #707070;   
+      padding-left: 40px;
+      
 }
+.sub-item-link:hover{
+        color: #16c8aa86;
+}
+.sub-item-link:focus{
+        color: #16c8aa86;
+}
+
+
 </style>

@@ -4,6 +4,9 @@ interface RootState {
   selectedText: string;
   textarea: string;
   setflag: boolean;
+  setpreview: boolean;
+  selectedTitle: string;
+  selectedItems: string;
 }
 
 const store = new Store<RootState>({
@@ -11,6 +14,9 @@ const store = new Store<RootState>({
     selectedText: '', // Выбранный текст
     textarea: null,
     flag: false,
+    preview: false,
+    selectedTitle: '',
+    selectedItems: '',
   },
   mutations: {
     setSelectedText(state, text) {
@@ -22,6 +28,15 @@ const store = new Store<RootState>({
     setflag(state, boolean) { 
       state.flag = boolean;
     },
+    setpreview(state, boolean) { 
+      state.preview = boolean;
+    },
+    setSelectedTitle(state, text) { 
+      state.selectedTitle = text;
+    },
+    setSelectedItems(state, text) { 
+      state.selectedItems = text;
+    },
   },
   actions: {
     updateSelectedText({ commit }, text) {
@@ -29,11 +44,12 @@ const store = new Store<RootState>({
     },
     updateTextarea({ commit }, textarea) {
       commit('setTextarea', textarea);
-    }
+    },
+
   },
   getters: {
     getSelectedText: state => state.selectedText,
-    getTextarea: state => state.textarea
+    getTextarea: state => state.textarea,
   }
 });
 

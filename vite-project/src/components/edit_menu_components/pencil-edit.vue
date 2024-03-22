@@ -31,4 +31,7 @@ export default {
         margin: 2px 0 0 3px;
     }
 }
+.pencil:hover{
+    background-color: #16c8aa86;
+}
 </style>

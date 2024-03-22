@@ -10,11 +10,15 @@
         </scroll>
       </div>
       <div class="directory-form">
-        <div class="directory-edit">
-          <directory_menu_edit/>
+        <div class="directory-edit"  v-if="selectedTitle">
+          <directory_menu_edit/>  
         </div>
-        <div class="directory-view">
-            <scroll style="width: 1475px; overflow-x: hidden;">
+        <div class="directory-view" :style="directoryViewStyles">
+          <div class="empty_wrapper" v-if="!selectedTitle">
+          <div class="empty_label"> Выберите модуль для просмотра документации </div>
+          <div class="empty_icon" style="padding-left: 32px;"> <i class="fa-solid fa-info"></i></div>
+        </div>
+            <scroll style="width: 1475px; overflow-x: hidden;" v-if="selectedTitle">
               <Directory/>
             </scroll>
         </div>
@@ -47,7 +51,13 @@ export default {
     save_choice,
   },
   computed: {
-    ...mapState(['flag'])
+    ...mapState(['flag', 'preview', 'selectedTitle']),
+directoryViewStyles() {
+      return {
+        height: this.flag ? '760px' : '800px',
+        overflowX: 'hidden',
+      };
+    },
   },
 }
 
@@ -88,6 +98,34 @@ border-radius: 5px;
 
 }
 
+.empty_wrapper {
+  position: sticky;
+  margin: auto;
+  width: 450px;
+  height: 150px;
+  border-radius: 10px;
+  z-index: 99999999;
+  background-color: #DEE6E9;
+}
+
+.empty_label {
+  text-align: center;
+  margin-top: 10px;
+  width: 100%;
+  color: black;
+}
+
+.empty_icon {
+  position: sticky;
+  color: #DEE6E9;
+  background-color: #FFFFFF;
+  margin: auto;
+  margin-top: 18px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  font-size: 50px;
+}
 .directory-sidebar {
 display: flex;
 flex-direction: column;
@@ -112,6 +150,8 @@ border-radius: 5px;
   display: flex;
   flex: 1;
   flex-direction: column; 
+  height: 100%;
+  width: 100%;
 }
 
 .directory-edit {
@@ -131,8 +171,7 @@ align-items: flex-start;
 position: absolute;
 margin-top: 80px;
 margin-left: 0px;
-padding-top: 10px;
-height: 800px;
+height: 700px;
 width: 1470px;
 border-radius: 5px;
 background: #FFFFFF;

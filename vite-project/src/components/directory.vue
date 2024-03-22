@@ -1,6 +1,6 @@
 <template>
-  <div v-if="editing">
-    <textarea v-model="articleContent" @mouseup="handleSelection"></textarea>
+  <div v-if="preview">
+    <textarea v-model="articleContent" @mouseup="handleSelection" :style="directoryViewStyles"></textarea>
     <br>
   </div>
   <div v-else v-html="renderedArticle"></div>
@@ -13,13 +13,18 @@ import { mapState, mapMutations } from 'vuex';
 export default {
   data() {
     return {
-      articleContent: 'Привет, _как_ <center>Центр</center>',
-      editing: true,
+      articleContent: 'Привет, _как_ <center>делааа?</center>',
       renderedArticle: '', 
     };
   },
   computed: {
-    ...mapState(['selectedText', 'textarea'])
+    ...mapState(['selectedText', 'textarea', 'flag', 'preview']),
+      directoryViewStyles() {
+      return {
+        height: this.flag ? '760px' : '800px',
+        overflowX: 'hidden',
+      };
+    },
   },
   methods: {
     ...mapMutations(['setSelectedText', 'setTextarea']),

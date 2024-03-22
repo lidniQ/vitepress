@@ -126,12 +126,9 @@ export default {
 .section{
   height: 80px;
   width: 1400px;
-  background-color: aqua;
 
 }
 .col{
-  background-color: #fff;
-
   
 }
 
@@ -142,6 +139,9 @@ export default {
 
 .first{
   border-right: 2px solid #40576d33;
+  select{
+    background-color: #F2F5F7;
+  }
 }
 .second{
   border-right: 2px solid #40576d33;
@@ -170,7 +170,7 @@ export default {
   input[type=color]{
   outline: none;
   border: none;
-  background-color: #fff;
+  background-color: #F2F5F7;
 }
 button:hover{
     background-color: #16c8aa86;

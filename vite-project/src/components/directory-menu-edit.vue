@@ -3,7 +3,7 @@
     <pencil_edit v-if="!flag"/>
   </div>
   <div class="edit-menu">
-    <main_menu_edit v-if="flag"/>
+    <main_menu_edit v-if="preview"/>
   </div>
 </template>
 
@@ -22,12 +22,13 @@ export default {
     main_menu_edit,
   },
   computed: {
-    ...mapState(['flag'])
+    ...mapState(['flag', 'preview'])
   },
   methods: {
-    ...mapMutations(['setflag']),
+    ...mapMutations(['setflag', 'setpreview']),
     toggleViews() {
-      this.setflag(!this.flag);
+      this.setflag(true);
+      this.setpreview(true);
     }
   }
 }
