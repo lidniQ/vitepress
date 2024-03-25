@@ -51,7 +51,7 @@ export default {
     save_choice,
   },
   computed: {
-    ...mapState(['flag', 'preview', 'selectedTitle']),
+    ...mapState(['flag', 'preview', 'selectedTitle','preview']),
 directoryViewStyles() {
   return {
         marginTop: this.selectedTitle ? '80px': '20px',
@@ -60,8 +60,17 @@ directoryViewStyles() {
     },
     newDirectoryStyle() {
   return {
-        height: this.flag ? '760px' : '800px',  
+      height: this.flag ? '760px' : '800px',  
+      marginTop: this.preview ? '80px' : '20px',
+      height: this.preview ? '760px' : '820px',
+
       };
+    },
+    newDirectoryStyle2x() {
+  return {
+      marginTop: this.preview ? '60px': '80px',
+      height: this.preview ? '800px' : '860px',
+  };
     },
   },
 }

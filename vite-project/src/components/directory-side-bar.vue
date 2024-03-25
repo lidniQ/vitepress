@@ -32,22 +32,7 @@ export default {
   data() {
     return {
       articles: [
-        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавыпппппппппп пппппппппппп2'] },
-        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
-        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
-        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
-        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
-        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
-        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
-        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
-        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
-        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
-        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
-        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
-        { title: 'Тест', expanded: false, items: ['тести 1', 'авыавы 2'] },
-        { title: '3 штуки', expanded: false, items: ['1 штучка', '2 штучка', '3 штучка'] },
-        { title: '3 штуки',  },
-
+        { title: 'Тест', expanded: false, items: ['выавыпптести 1', 'апппппппп пппппппппппп2'] },
       ],
     };
   },
