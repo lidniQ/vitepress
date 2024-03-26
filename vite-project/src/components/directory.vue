@@ -9,7 +9,6 @@
   <script>
   import { marked } from 'marked';
   import { mapState, mapMutations } from 'vuex';
-
   export default {
     data() {
       return {
@@ -17,7 +16,7 @@
       };
     },
     computed: {
-      ...mapState(['selectedText', 'textarea', 'flag', 'preview']),
+      ...mapState(['articleContent', 'selectedText', 'textarea', 'flag', 'preview']),
         directoryViewStyles() {
         return {
           height: this.flag ? '720px' : '800px',
@@ -25,7 +24,7 @@
         };
       },
       renderedArticle() {
-      return marked(this.articleContent);
+        return marked(this.articleContent);
     }
     },
     methods: {
@@ -33,17 +32,14 @@
       handleSelection(event) {
       const clickedWord = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd);
         this.setSelectedText(clickedWord);
+        this.setTextarea(document.querySelector('textarea'));
       } 
     },
-    mounted() {
-      this.setTextarea(document.querySelector('textarea'));
+};
+</script>
 
-    }
 
-  };
-  </script>
-
-  <style>
+<style>
   textarea {
     color: black;
     width: 1470px;

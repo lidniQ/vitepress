@@ -1,6 +1,6 @@
 <template>
   <div class="menubar">
-    <span><a href="http://10.27.1.65:5003/">Главный экран</a> &nbsp;|&nbsp; <span><a href="index.html">Справка</a></span> <span v-if="selectedTitle"><a class="selected">&nbsp;|&nbsp;{{selectedTitle }}</a></span></span>
+    <span><a href="http://10.27.1.65:5003/">Главный экран</a> &nbsp;|&nbsp; <span><a class="spravka" href="index.html"  :style="spravkaColor">Справка</a></span> <span v-if="selectedTitle"><a class="selected">&nbsp;|&nbsp;{{selectedTitle }}</a></span></span>
   </div>
 </template>
 <script>
@@ -8,7 +8,12 @@ import { mapState, mapMutations } from 'vuex';
 
 export default {
   computed: {
-    ...mapState(['selectedTitle', 'selectedItems'])
+    ...mapState(['selectedTitle']),
+    spravkaColor() {
+      return {
+        color: this.selectedTitle ? 'black' : '#707070',
+      };
+    }
   },
 }
 </script>
@@ -34,4 +39,5 @@ export default {
   a.selected{
   color: #707070;
   }
+
 </style>

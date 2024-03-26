@@ -41,19 +41,21 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
+import axios from 'axios';
 
 export default {
   data() {
     return {
+      articleContent:'',
     };
   },
   computed: {
-    ...mapState(['flag', 'preview']) 
+    ...mapState(['articleContent', 'flag', 'preview']) 
   },
   methods: {
     cancelArticle() {
       this.setflag(false); 
-      this.setpreview(false);
+      this.setpreview(false); 
     },
     previewArticle() {
       this.setpreview(!this.preview);
@@ -62,7 +64,7 @@ export default {
       this.setflag(false); 
       this.setpreview(false);
     },
-    ...mapMutations(['setflag', 'setpreview'])
+    ...mapMutations(['setflag', 'setpreview']) 
   },
   mounted() {
   }

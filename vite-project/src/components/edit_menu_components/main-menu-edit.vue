@@ -23,47 +23,43 @@
                     <i class="fa-solid fa-italic"></i>            
             </button>
             <button type="button"
-                    onclick="f7(this)">
+                    @click="handleUnderlineText">
                     <i class="fa-solid fa-underline"></i>
             </button>
             <button type="button"
-                    onclick="f8(this)">
+                    @click="handleStrikethroughText">
                     <i class="fa-solid fa-strikethrough"></i>
             </button>
           </div>
           <div class="third box">
             <button type="button"
-                    onclick="f9(this)">
+                    @click="alignLeft">
                     <i class="fa-solid fa-align-left"></i>
             </button>
             <button type="button"
-                    onclick="f10(this)">
+                    @click="alignCenter">
                     <i class="fa-solid fa-align-center"></i>
             </button>
             <button type="button"
-                    onclick="f11(this)">
+                    @click="alignRight">
                     <i class="fa-solid fa-align-right"></i>
             </button>
             <button type="button"
-                    onclick="f12(this)">
+                    @click="alignJustify">
                     <i class="fa-solid fa-align-justify"></i>
             </button> 
           </div>
           <div class="fourth box">
-            <button type="button"
-                    onclick="f13(this)">
+            <button type="button">
                     <i class="fa-solid fa-image"></i>
             </button>
-            <button type="button"
-                    onclick="f14(this)">
+            <button type="button">
                     <i class="fa-solid fa-video"></i>            
             </button>
-            <button class="link" type="button"
-                    onclick="f15(this)">
+            <button class="link" type="button">
                     <i class="fa-solid fa-link"></i>            
             </button>
-            <button type="button"
-                    onclick="f16(this)">
+            <button type="button">
                     <i class="fa-solid fa-table"></i>            
             </button>
             <input type="color" onchange="f17(this)">
@@ -107,7 +103,66 @@ export default {
 
     handleItalicText() {
       this.insertMarkdownText('_');
-    }
+    },
+    handleUnderlineText() { 
+      const textarea = this.$store.getters.getTextarea;
+      const startPos = textarea.selectionStart;
+      const endPos = textarea.selectionEnd;
+      let text = textarea.value;
+
+      if (this.$store.state.selectedText === "" || this.$store.state.selectedText === " ") {
+
+      }
+      else {
+        text = text.substring(0, startPos) + '<u>' + text.substring(startPos, endPos) + '</u>' + text.substring(endPos);
+        this.isBold = true;
+        textarea.value = text;
+        this.markdownContent = textarea.value;
+      }
+    },
+    handleStrikethroughText() { 
+      this.insertMarkdownText('~');
+    },
+    alignLeft() { 
+      this.insertMarkdownText('');
+    },
+    alignCenter() { 
+      const textarea = this.$store.getters.getTextarea;
+      const startPos = textarea.selectionStart;
+      const endPos = textarea.selectionEnd;
+      let text = textarea.value;
+
+      if (this.$store.state.selectedText === "" || this.$store.state.selectedText === " ") {
+
+      }
+      else {
+        text = text.substring(0, startPos) + '<center>' + text.substring(startPos, endPos) + '</center>' + text.substring(endPos);
+        this.isBold = true;
+        textarea.value = text;
+        this.markdownContent = textarea.value;
+      }
+    },
+    alignRight() { 
+      const textarea = this.$store.getters.getTextarea;
+      const startPos = textarea.selectionStart;
+      const endPos = textarea.selectionEnd;
+      let text = textarea.value;
+
+      if (this.$store.state.selectedText === "" || this.$store.state.selectedText === " ") {
+
+      }
+      else {
+        text = text.substring(0, startPos) + '<p align="right">' + text.substring(startPos, endPos) + '</p>' + text.substring(endPos);
+        this.isBold = true;
+        textarea.value = text;
+        this.markdownContent = textarea.value;
+      }
+    },
+    alignJustify() { 
+      this.insertMarkdownText('|');
+
+    },
+    
   }
 };
 </script>

@@ -1,8 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from pydantic import BaseModel
 
 app = FastAPI()
 
+class Text(BaseModel):
+    text: str
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+@app.post("/process")
+async def process_text(text: Text):
+    text_a = text.text

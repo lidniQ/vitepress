@@ -6,7 +6,7 @@ interface RootState {
   setflag: boolean;
   setpreview: boolean;
   selectedTitle: string;
-  selectedItems: string;
+  articleContent: string
 }
 
 const store = new Store<RootState>({
@@ -16,7 +16,6 @@ const store = new Store<RootState>({
     flag: false,
     preview: false,
     selectedTitle: '',
-    selectedItems: '',
   },
   mutations: {
     setSelectedText(state, text) {
@@ -34,9 +33,10 @@ const store = new Store<RootState>({
     setSelectedTitle(state, text) { 
       state.selectedTitle = text;
     },
-    setSelectedItems(state, text) { 
-      state.selectedItems = text;
-    },
+    setArticleContent(state, text) { 
+      state.articleContent = text
+    }
+
   },
   actions: {
     updateSelectedText({ commit }, text) {
