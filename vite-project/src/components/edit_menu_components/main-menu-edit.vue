@@ -62,7 +62,7 @@
             <button type="button">
                     <i class="fa-solid fa-table"></i>            
             </button>
-            <input type="color" onchange="f17(this)">
+            <input type="color" v-model="color" @input="colorPiker">
           </div>
         </div>
       </div>
@@ -76,6 +76,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   data() {
     return {
+      color: '',
     };
   },
   methods: {
@@ -162,6 +163,9 @@ export default {
       this.insertMarkdownText('|');
 
     },
+    colorPiker() { 
+      console.log(this.color)
+    },
     
   }
 };
@@ -240,19 +244,19 @@ button:hover{
 select {
   outline: none;
   border: none;
-  width: 200px;
+  width: 120px;
   color: #131c35;
-  font-size: 24px;
+  font-size: 16px;
   background-color: #fff;
   padding: 10px 0;
-  margin-left: 10px;
+  margin-left: 2px;
 }
 
 option:nth-child(1) {
-  font-size: 24px; 
-}
-option:nth-child(2) {
   font-size: 18px; 
+}
+option:nth-child(2) { 
+  font-size: 17px; 
 }
 
 option:nth-child(3) {
@@ -266,7 +270,7 @@ option:nth-child(4) {
 button{
   border: none;
   color: #131c35;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 300;
   background: transparent;
   padding: 10px 16px;
