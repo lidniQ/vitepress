@@ -62,7 +62,10 @@
             <button type="button">
                     <i class="fa-solid fa-table"></i>            
             </button>
-            <input type="color" v-model="color" @input="colorPiker">
+            <button type="button" @click="applyColor">
+            <i class="fa-solid fa-paint-brush"></i>
+            </button>
+            <input type="color" v-model="newColor">
           </div>
         </div>
       </div>
@@ -71,16 +74,28 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
   data() {
     return {
-      color: '',
+      newColor: '',
     };
   },
+  computed: {
+    ...mapState(['color']),
+
+  },
+  created() {
+    this.newColor = this.color; 
+  },
+  watch: {
+    newColor(event) {
+      this.updateColor(event); 
+    }
+  },
   methods: {
-    ...mapActions(['updateSelectedText']),
+    ...mapActions(['updateColor', 'updateSelectedText']),
     insertMarkdownText(textToInsert) {
       const textarea = this.$store.getters.getTextarea;
       const startPos = textarea.selectionStart;
@@ -92,7 +107,6 @@ export default {
       }
       else {
         text = text.substring(0, startPos) + textToInsert + text.substring(startPos, endPos) + textToInsert + text.substring(endPos);
-        this.isBold = true;
         textarea.value = text;
         this.markdownContent = textarea.value;
       }
@@ -116,7 +130,6 @@ export default {
       }
       else {
         text = text.substring(0, startPos) + '<u>' + text.substring(startPos, endPos) + '</u>' + text.substring(endPos);
-        this.isBold = true;
         textarea.value = text;
         this.markdownContent = textarea.value;
       }
@@ -138,7 +151,6 @@ export default {
       }
       else {
         text = text.substring(0, startPos) + '<center>' + text.substring(startPos, endPos) + '</center>' + text.substring(endPos);
-        this.isBold = true;
         textarea.value = text;
         this.markdownContent = textarea.value;
       }
@@ -154,7 +166,6 @@ export default {
       }
       else {
         text = text.substring(0, startPos) + '<p align="right">' + text.substring(startPos, endPos) + '</p>' + text.substring(endPos);
-        this.isBold = true;
         textarea.value = text;
         this.markdownContent = textarea.value;
       }
@@ -163,10 +174,39 @@ export default {
       this.insertMarkdownText('|');
 
     },
-    colorPiker() { 
-      console.log(this.color)
+    applyColor() {
+      this.updateColor(this.newColor);
+      this.colorText();
+
+  },
+    colorText() {
+      const textarea = this.$store.getters.getTextarea;
+      const startPos = textarea.selectionStart;
+      const endPos = textarea.selectionEnd;
+      const selectedText = this.$store.state.selectedText;
+      let text = textarea.value;
+
+      if (selectedText === "" || selectedText === " ") {
+        return;
+      }
+
+      const coloredText = `<font color="${this.color}">${selectedText}</font>`;
+      const fontTagRegex = /<font color="#[0-9a-fA-F]{6}">.*?<\/font>/g;
+      const existingFontTags = text.match(fontTagRegex);
+
+      if(existingFontTags){
+          existingFontTags.forEach((tag) => {
+              if(tag.includes(selectedText)){
+                  text = text.replace(tag, tag.replace(selectedText, coloredText));
+              }
+          });
+      } else {
+          text = text.substring(0, startPos) + coloredText + text.substring(endPos);
+      }
+
+      textarea.value = text;
+      this.markdownContent = textarea.value;
     },
-    
   }
 };
 </script>

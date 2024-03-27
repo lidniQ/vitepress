@@ -6,7 +6,8 @@ interface RootState {
   setflag: boolean;
   setpreview: boolean;
   selectedTitle: string;
-  articleContent: string
+  articleContent: string;
+  color: string;
 }
 
 const store = new Store<RootState>({
@@ -16,6 +17,7 @@ const store = new Store<RootState>({
     flag: false,
     preview: false,
     selectedTitle: '',
+    color: "#000000",
   },
   mutations: {
     setSelectedText(state, text) {
@@ -35,10 +37,17 @@ const store = new Store<RootState>({
     },
     setArticleContent(state, text) { 
       state.articleContent = text
-    }
+    },
+    setColor(state, text) { 
+      state.color = text
+    },
+    
 
   },
   actions: {
+    updateColor({ commit }, newColor) {
+      commit('setColor', newColor);
+    },
     updateSelectedText({ commit }, text) {
       commit('setSelectedText', text);
     },
@@ -48,6 +57,7 @@ const store = new Store<RootState>({
 
   },
   getters: {
+    getColor: state => state.color,
     getSelectedText: state => state.selectedText,
     getTextarea: state => state.textarea,
   }

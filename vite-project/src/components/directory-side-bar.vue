@@ -27,20 +27,25 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
+import jsonData from './json/articles.json';
 
 export default {
   data() {
     return {
-      articles: [
-        { title: 'Тест', expanded: false, items: ['выавыпптести 1', 'апппппппп пппппппппппп2'] },
-      ],
+      articles: [],
     };
+  },
+  created() {
+    this.loadArticles(); // при создании компонента загружаем статьи
   },
   computed: { 
     ...mapState(['selectedTitle', 'selectedItems'])
   },
   methods: {
   ...mapMutations(['setSelectedTitle', 'setSelectedItems']),
+  loadArticles() {
+      this.articles = jsonData.articles; // устанавливаем данные статей из импортированного JSON
+    },
   toggleDropdown(index, items) {
     this.articles[index].expanded = !this.articles[index].expanded;
     this.setSelectedTitle(this.articles[index].title);
